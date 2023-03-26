@@ -1,15 +1,19 @@
 import React from 'react';
 import { addToDb, removeFromDb } from '../../Utilities/fakedb';
+import { addLocalStorage, addToLocalStorage } from '../../Utilities/localStorage';
 import './Cosmetic.css'
 
 const Cosmetic = (props) => {
 
     const addToCart = (id) => {
-        addToDb(id);
+        // addToDb(id);
+        addLocalStorage(id);//option-1
+        addToLocalStorage(id); //option-2
+        // localStorage.setItem(id, 1); key and value
     }
 
     const removeFromCart= (id) => {
-        removeFromDb(id);
+        // removeFromDb(id);
     }
     const addToCartWithParam = () => addToCart(id);
     const {name, price, id} = props.cosmetic;
