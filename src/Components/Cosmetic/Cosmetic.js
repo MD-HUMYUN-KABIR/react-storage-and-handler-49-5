@@ -1,19 +1,23 @@
 import React from 'react';
-import { addToDb, removeFromDb } from '../../Utilities/fakedb';
-import { addLocalStorage, addToLocalStorage } from '../../Utilities/localStorage';
+// import { addToDb, removeFromDb } from '../../Utilities/fakedb';
+import { addLocalStorage, addToLocalStorage, deleteCart, removeFromLocalStorage } from '../../Utilities/localStorage';
 import './Cosmetic.css'
 
 const Cosmetic = (props) => {
 
     const addToCart = (id) => {
         // addToDb(id);
-        addLocalStorage(id);//option-1
+        // addLocalStorage(id);//option-1
         addToLocalStorage(id); //option-2
         // localStorage.setItem(id, 1); key and value
     }
 
     const removeFromCart= (id) => {
         // removeFromDb(id);
+        removeFromLocalStorage(id);
+    }
+    const deleteAll = () => {
+        deleteCart();
     }
     const addToCartWithParam = () => addToCart(id);
     const {name, price, id} = props.cosmetic;
@@ -27,6 +31,7 @@ const Cosmetic = (props) => {
             <button onClick={addToCartWithParam}>Add to cart</button>
             <button onClick={() => addToCart(id)}>Purchase</button>
             <button onClick={() => removeFromCart(id)}>remove</button>
+            <button onClick={() => deleteAll()}>deleteall</button>
 
             {/* <button onClick={addToCart(id)}>Add to cart</button>  aivabe call korle click korar age e kaj hoye jabe then click korle ar pore kaj hobe na...so aikahn theke arekta function k id soho call kore dilam*/} 
             

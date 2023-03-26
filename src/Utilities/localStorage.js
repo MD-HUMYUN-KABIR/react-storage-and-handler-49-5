@@ -26,9 +26,7 @@ const addToLocalStorage = (id) => {
            if(storedCart){
                shoppingCart = JSON.parse(storedCart);
            }
-           else{
-               shoppingCart = {};
-           }
+         
 
 
            //add quantity
@@ -44,4 +42,23 @@ const addToLocalStorage = (id) => {
     }
     localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart));
 }
-export {addLocalStorage, addToLocalStorage};
+
+
+////////////////remove from db
+const removeFromLocalStorage = (id) => {
+    const storedCart = localStorage.getItem('shopping-cart');
+    if(storedCart){
+        const shoppingCart = JSON.parse(storedCart);//loop in dite hole age parse korte hobe
+        if(id in shoppingCart){
+            delete shoppingCart[id];
+            localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart));//click kora id delete howar por oita chara bakigula k abar storage e set korlam
+        }
+    }
+}
+
+////////////////////////delete from db
+const deleteCart = () => {
+    localStorage.removeItem('shopping-cart');
+}
+
+export {addLocalStorage, addToLocalStorage, removeFromLocalStorage, deleteCart};

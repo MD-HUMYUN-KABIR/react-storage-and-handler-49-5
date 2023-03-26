@@ -37,10 +37,10 @@ const addToDb = (id) => {
 const removeFromDb = (id) => {
     const storedCart = localStorage.getItem('shopping-cart');
     if(storedCart){
-        const shoppingCart = JSON.parse(storedCart);
+        const shoppingCart = JSON.parse(storedCart);//loop in dite hole age parse korte hobe
         if(id in shoppingCart){
             delete shoppingCart[id];
-            localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart));
+            localStorage.setItem('shopping-cart', JSON.stringify(shoppingCart));//click kora id delete howar por oita chara bakigula k abar storage e set korlam
         }
     }
 }
